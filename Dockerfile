@@ -1,5 +1,5 @@
 FROM dockerfile/nodejs
-MAINTAINER Mike Harris "mike.harris@mammal.io"
+MAINTAINER Mike Harris "hello@mikemjharris.com"
 
 RUN npm --no-color install -g bower && \
     npm --no-color install -g gulp && \
