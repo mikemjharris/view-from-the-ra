@@ -20,6 +20,13 @@ app.use(express.static(path.join(__dirname, '../bower_components')));
 
 require('./routes/main')(app);
 
+
+// for displaying index.jade
+app.get('/jade', function ( req, res, next ) {
+  res.render('index');
+});
+
+// displays static main.html
 app.get('*', function ( req, res, next ) {
   res.redirect('../');
 });
