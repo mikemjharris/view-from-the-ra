@@ -1,4 +1,4 @@
 console.log('Setup');
 
 
-//import './main.css'
+import './main.scss'

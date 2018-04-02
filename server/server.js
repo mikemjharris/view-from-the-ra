@@ -15,7 +15,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 require('./routes/main')(app);
 
@@ -54,7 +54,7 @@ app.use(function ( err, req, res ) {
   });
 });
 
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 8001);
 
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
