@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node ./server/server.js",
-    "build": "webpack"
+    "build": "webpack",
+    "all": "webpack && node ./server/server.js"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "ejs": "^2.5.8",
-    "entry": "*",
     "express": "~4.2.0",
     "morgan": "~1.0.0",
     "static-favicon": "~1.0.0"
