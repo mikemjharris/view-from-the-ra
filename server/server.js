@@ -1,10 +1,10 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,13 +17,17 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../dist')));
 
+// set the view engine to ejs
+app.set('view engine', 'ejs')
+
 require('./routes/main')(app);
 
+// blog home page
+app.get('/', (req, res) => {
+  // render `home.ejs` with the list of posts
+  res.render('home', { data: { title: 'My Seed Project'}})
+})
 
-// for displaying index.jade
-app.get('/jade', function ( req, res, next ) {
-  res.render('index');
-});
 
 // displays static main.html
 app.get('*', function ( req, res, next ) {

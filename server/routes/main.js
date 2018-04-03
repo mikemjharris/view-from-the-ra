@@ -1,6 +1,6 @@
 module.exports = function ( app ) {
 
-  app.get('/', function( req, res ) {
+  app.get('/html', function( req, res ) {
     res.render('main.html');
   });
 
