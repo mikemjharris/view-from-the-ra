@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 //database setup
-const mongo = require('mongoskin');
 const port = process.env.PORT || 3000;
 const mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost:27017";
 const dbName = 'view-from-the-ra'
@@ -13,7 +12,7 @@ const MongoClient = require('mongodb').MongoClient
 
 MongoClient.connect(mongoUri, (err, client) => {
   if (err) return console.log(err)
-  const db = client.db(dbName)
+  const db = client.db(dbName);
   const app = express();
 
 
