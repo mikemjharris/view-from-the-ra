@@ -32,34 +32,26 @@ MongoClient.connect(mongoUri, (err, client) => {
   app.set('view engine', 'ejs')
 
   // attach db to the req
-  app.use(function(req,res,next){
+  app.use((req,res,next) => {
     req.db = db;
     next();
   });
 
   require('./routes/main')(app);
 
-  // blog home page
-  app.get('/', (req, res) => {
-    // render `home.ejs` with the list of posts
-    res.render('home', { data: { title: 'My Seed Project'}})
-  })
-
-
-  // displays static main.html
+  // redirect everything not in main 
   app.get('*', function ( req, res, next ) {
-    console.log('hey');
     res.redirect('../');
   });
 
-  app.use(function (req, res, next ) {
+  app.use((req, res, next ) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
   });
 
   if (app.get('env') === 'development') {
-    app.use(function ( err, req, res ) {
+    app.use(( err, req, res ) => {
       res.status(err.status || 500);
       res.render('error', {
         message: err.message,
@@ -68,7 +60,7 @@ MongoClient.connect(mongoUri, (err, client) => {
     });
   }
 
-  app.use(function ( err, req, res ) {
+  app.use(( err, req, res ) => {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -78,7 +70,7 @@ MongoClient.connect(mongoUri, (err, client) => {
 
   app.set('port', process.env.PORT || 8001);
 
-  var server = app.listen(app.get('port'), function() {
+  var server = app.listen(app.get('port'), () => {
     console.log('Express server listening on port ' + server.address().port);
   });
 })
