@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 
 //database setup
 const port = process.env.PORT || 3000;
-const mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost:27017";
+console.log(process.env.MONGODB_URI);
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const dbName = 'view-from-the-ra'
 const MongoClient = require('mongodb').MongoClient
 
