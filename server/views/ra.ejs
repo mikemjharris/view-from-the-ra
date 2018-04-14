@@ -10,14 +10,24 @@
 </head>
 
 <body class="ra">
-<svg viewbox="0 0 100 50" width="100" height="50">
+<svg id="ra-svg" viewbox="0 0 100 50" width="100" height="50">
   <defs>
     <mask id="mask2" x="0" y="0" width="100" height="50">
       <rect x="0" y="0" width="100" height="50" fill="#fff"/>
-      <text x="50" text-anchor="middle" y="25" dy="0">#ViewFromTheRA</text>
+      <text x="50" text-anchor="middle" y="25" dy="0">#ViewFromTheRA
+         <animate
+            attributeName = "y"
+            from          = "25"
+            to            = "10"
+            begin         = "3.5s"
+            dur           = "1s"
+            id            = "swipe"
+            fill          = "freeze"
+    />
+</text>
     </mask>
   </defs>
-  <rect class="test" x="0" y="0" width="100" height="50" mask="url(#mask2)" fill-opacity="0" fill="hsla(1,100%, 100%, 1)"/>
+  <rect class="svg-rect" x="0" y="0" width="100" height="50" mask="url(#mask2)" fill-opacity="0" fill="hsla(1,100%, 100%, 1)"/>
 </svg>
 
 </body>

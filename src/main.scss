@@ -1,6 +1,11 @@
 body{
-	height:100%;margin:0;padding:0;
+	margin:0;padding:0;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
+$animation-delay: 2s;
 
 h1 {
 	color: red;
@@ -37,39 +42,39 @@ svg:hover .move{
 }
 
 .ra {
-	img {
-		width: 100%;
-		height: auto;
-	}
-	.ra-masked-element {
-	}
-	text{
-		font-size:9px;
-		font-weight:900;
-		font-family: Verdana;
-	}
 	svg{
 		background:url('/imgs/ra-courtyard-progressive.jpg');
+		position: absolute;
+		 position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 300ms;
 		background-size:cover;
-		width:100vw; height:auto;
+		width:100vw; 
+		height:auto;
 		display:block;
+		animation-name: absolute-height;
+		animation-duration: 1s;
+		animation-delay: 3.5s;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
 	}
-	$animation-delay: 2s;
+
 	svg text {
 		font-size: 500px;
+		font-weight:900;
+		font-family: Verdana;
 		transform: translateY(225px);
-		transition: 1s ;
 		animation-timing-function: ease-in-out;
 		animation-name: text-size;
 		animation-duration: 1s;
 		animation-delay: $animation-delay;
 		animation-fill-mode: forwards;
-		//  transition-timing-function: cubic-bezier(0.6, 0.2, 1, 1);
-		//transform: translateY(-2000px) translateX(-2050px)  scale(100);
 	}
 
-	.test {
+	.svg-rect {
 		fill-opacity: 0;
+		opacity: 0;
 		animation-name: background-fade;
 		animation-duration: 1s;
 		animation-delay: $animation-delay;
@@ -90,9 +95,21 @@ svg:hover .move{
 	@keyframes background-fade {
 		from {
 			fill-opacity: 0;
+			opacity: 0;
 		}
 		to {
 			fill-opacity: 1;
+			opacity: 1;
+		}
+	}
+	@keyframes absolute-height {
+		from {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		to {
+			top: 0%;
+			transform: translateY(0%);
 		}
 	}
 }
