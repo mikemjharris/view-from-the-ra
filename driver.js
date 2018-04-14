@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017";
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const MongoClient = require('mongodb').MongoClient
 const dbName = 'view-from-the-ra'
 const puppeteer = require('puppeteer');
@@ -20,7 +20,7 @@ function parseHtml(html) {
 var list_of_promises = [];
 
 (async() => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   const timeout = ms => new Promise(res => setTimeout(res, ms))
 
