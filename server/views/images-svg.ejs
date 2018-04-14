@@ -1,56 +1,60 @@
-
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<title>View from the RA</title>
+		<link  rel='stylesheet' href='style.css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	</head>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Seed Project</title>
-    <link  rel='stylesheet' href='style.css' />
-    <script src="bundle.js"></script>
-  </head>
-
-  <body>
-    <svg class="svg-mask">
-      <defs>
-        <mask id="mask1" >
-          <linearGradient id="grad" gradientUnits="objectBoundingBox" x2="0" y2="1">
-            <stop stop-color="white" offset="0"/>
-            <stop stop-color="white" offset="1"stop-opacity="0.5" />
-            <stop stop-color="white" stop-opacity="1" offset="1"/>
-          </linearGradient>
-          <g id="heart" transform="translate(150 195) scale(1)">
-            <path d="M0 -100 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -100 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100" fill="url(#grad)" stroke="white" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
-              <animate dur="1.5s" repeatCount="indefinite" attributeName="d" 
-                                                    keyTimes="0; 0.2; 1"
-                                                    values="
-                                                    M0 -120 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -120 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100; M0 -125 C-45 -180 -115 -140 -115 -100 C-115 -30 -25 -30 0 90 M0 -125 C45 -180 115 -140 115 -100 C115 -30 25 -30 0 90; M0 -120 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -120 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100">
-
-              </animate>
-            </path>
-          </g>
-      </mask>
-<mask id="mask2" >
-<rect width="200px" height="200px" fill="#fff" />
-</mask>
-      </defs>
-    </svg>
-
-      <% for (var i=0; i < images.length; i++) { %>
-    <svg class="masked-element" width="300" height="300" viewBox="0 0 300 400">
-      <g transform="translate(-70 -50) scale(1.5)">
-      <image xlink:href="<%= images[i].thumbnail_src %>" width="300" height="300" />
-      </g>
-    </svg>
-      <% } %>
-<svg viewBox="0 20 100 3" width="100" height="20">
+	<body class="ra">
+	<svg class="header-svg" id="ra-svg" viewbox="0 0 100 50" width="100" height="50">
   <defs>
-    <mask id="mask2" x="0" y="0" width="100" height="50">
-      <rect x="0" y="0" width="100" height="50" fill="#fff"></rect>
-      <text x="50" text-anchor="middle" y="25" dy="0">#ViewFromTheRA</text>
+    <mask id="mask-header" x="0" y="0" width="100" height="50">
+      <rect x="0" y="0" width="100" height="50" fill="#fff"/>
+      <text x="50" text-anchor="middle" y="25" dy="0">#ViewFromTheRA
+         <animate
+            attributeName = "y"
+            from          = "25"
+            to            = "10"
+            begin         = "3.5s"
+            dur           = "1s"
+            id            = "swipe"
+            fill          = "freeze"
+    />
+</text>
     </mask>
   </defs>
-  <rect class="svg-rect" x="0" y="0" width="200" height="50" mask="url(#mask2)" fill-opacity="0" fill="hsla(1,100%, 100%, 1)"></rect>
+  <rect class="svg-rect" x="0" y="0" width="100" height="50" mask="url(#mask-header)" fill-opacity="0" fill="hsla(1,100%, 100%, 1)"/>
 </svg>
-  </body>
+<p>I work at the RA take amateur pictures of what goes on and share here and on <a href="https://www.instagram.com/mikemjharris/" target="_blank">instagram</a></p>
+
+
+		<svg class="svg-mask">
+			<defs>
+			<mask>
+			<linearGradient id="grad" gradientUnits="objectBoundingBox" x2="0" y2="1">
+			<stop stop-color="white" offset="0"/>
+			<stop stop-color="white" offset="1"stop-opacity="0.5" />
+			<stop stop-color="white" stop-opacity="1" offset="1"/>
+			</linearGradient>
+			</defs>
+		</svg>
+	<div class="gallery-container">
+		<% for (var i=0; i < images.length; i++) { %>
+		<a href="https://www.instagram.com/p/<%= images[i].shortcode %>" target="_blank">
+			<svg class="masked-element" width="200" height="200" viewBox="0 0 200 200">
+				<defs>
+				<mask id="mask<%= i %>" >
+					<rect x="10" y="10" width="180px" height="180px" fill="url(#grad)" stroke-width="20"  stroke="white"/>
+				</mask>
+			</defs>
+				<image xlink:href="<%= images[i].thumbnail_src %>" width="200" height="200" mask="url(#mask<%= i %>)" />
+			</svg>
+		</a>
+		<% } %>
+	</div>
+
+	</body>
 
 </html>

@@ -1,14 +1,22 @@
 body{
 	margin:0;padding:0;
+	margin-top: 100px;
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-$animation-delay: 2s;
 
-h1 {
-	color: red;
+$animation-delay: 2s;
+.gallery-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;	
+	opacity: 0;
+	animation-name: fade-in;
+	animation-duration: 2s;
+	animation-delay: 4s;
+	animation-fill-mode: forwards;
 }
 
 img {
@@ -21,36 +29,52 @@ img {
 	width: 0px;
 	height: 0px;
 	opacity: 0;
-
 }
 
 .masked-element image {
 	transition: 2s;
-	mask: url(#mask1);
+//	mask: url(#mask2);
 }
 
-.masked-element:hover image {
-	mask: url(#mask2);
-}
 .masked-element {
 	height: 200px;
 	width: 200px;
 }
-
-svg:hover .move{
-	transform: rotate(-10deg) scale(2);
+.masked-element rect {	
+  transform: scale(0.5) translateX(50%) translateY(50%);
+  transition: 1s;
+}
+.masked-element:hover rect {	
+  transform: translateX(0px);
+}
+ 
+p {
+	text-align: center;
+	position: absolute;
+	z-index: -1;
+	top: 55px;
+	font-family: arial;
+	color: hsla(0, 10%, 80%, 1);
+	a {
+		color: hsla(270, 30%, 60%, 1);
+	}
+	opacity: 0;
+		animation-name: fade-in;
+		animation-duration: 2s;
+		animation-delay: 4s;
+		animation-fill-mode: forwards;
 }
 
 .ra {
-	svg{
+	.header-svg {
 		background:url('/imgs/ra-courtyard-progressive.jpg');
 		position: absolute;
-		 position: absolute;
     top: 50%;
     transform: translateY(-50%);
     transition: all 300ms;
 		background-size:cover;
 		width:100vw; 
+		max-width: 600px;
 		height:auto;
 		display:block;
 		animation-name: absolute-height;
@@ -58,12 +82,13 @@ svg:hover .move{
 		animation-delay: 3.5s;
 		animation-fill-mode: forwards;
 		animation-timing-function: ease-in-out;
+    z-index: -1;
 	}
 
-	svg text {
+	.header-svg text {
 		font-size: 500px;
 		font-weight:900;
-		font-family: Verdana;
+		font-family: Arial Black;
 		transform: translateY(225px);
 		animation-timing-function: ease-in-out;
 		animation-name: text-size;
@@ -114,6 +139,24 @@ svg:hover .move{
 	}
 }
 
+ @keyframes fade-in {
+		from {
+			opacity: 0;
+	}
+to { opacity: 1}
+}
 
+@media screen and  (max-width: 550px) {
+ body {
+	margin-top: 120px;
+ }
 
-
+	.gallery-container {
+		flex-wrap: no-wrap;
+		flex-direction: column;
+	}
+.masked-element rect {	
+  transform: translateX(0px);
+}
+ 
+}
