@@ -1,9 +1,102 @@
+body{
+	height:100%;margin:0;padding:0;
+}
+
 h1 {
-  color: red;
+	color: red;
 }
 
 img {
-  width: 100px;
-  height: 100px;
-  background: hsla(180, 80%, 80%, 1);
+	width: 100px;
+	height: 100px;
+	background: hsla(180, 80%, 80%, 1);
 }
+
+.svg-mask {
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+
+}
+
+.masked-element image {
+	transition: 2s;
+	mask: url(#mask1);
+}
+
+.masked-element:hover image {
+	mask: url(#mask2);
+}
+.masked-element {
+	height: 200px;
+	width: 200px;
+}
+
+svg:hover .move{
+	transform: rotate(-10deg) scale(2);
+}
+
+.ra {
+	img {
+		width: 100%;
+		height: auto;
+	}
+	.ra-masked-element {
+	}
+	text{
+		font-size:9px;
+		font-weight:900;
+		font-family: Verdana;
+	}
+	svg{
+		background:url('/imgs/ra-courtyard-progressive.jpg');
+		background-size:cover;
+		width:100vw; height:auto;
+		display:block;
+	}
+	$animation-delay: 2s;
+	svg text {
+		font-size: 500px;
+		transform: translateY(225px);
+		transition: 1s ;
+		animation-timing-function: ease-in-out;
+		animation-name: text-size;
+		animation-duration: 1s;
+		animation-delay: $animation-delay;
+		animation-fill-mode: forwards;
+		//  transition-timing-function: cubic-bezier(0.6, 0.2, 1, 1);
+		//transform: translateY(-2000px) translateX(-2050px)  scale(100);
+	}
+
+	.test {
+		fill-opacity: 0;
+		animation-name: background-fade;
+		animation-duration: 1s;
+		animation-delay: $animation-delay;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes text-size{
+		from {
+			font-size: 500px;
+			transform: translateY(225px);
+		}
+		to {
+			font-size: 9px;
+			transform: translateY(0px);
+		}
+	}	 
+
+	@keyframes background-fade {
+		from {
+			fill-opacity: 0;
+		}
+		to {
+			fill-opacity: 1;
+		}
+	}
+}
+
+
+
+

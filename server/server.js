@@ -26,6 +26,7 @@ MongoClient.connect(mongoUri, (err, client) => {
   app.use(bodyParser.urlencoded());
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, '../dist')));
+  app.use(express.static(path.join(__dirname, '../public'),  {maxAge: "30d"}));
 
   // set the view engine to ejs
   app.set('view engine', 'ejs')

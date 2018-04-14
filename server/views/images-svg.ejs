@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Seed Project</title>
+    <link  rel='stylesheet' href='style.css' />
+    <script src="bundle.js"></script>
+  </head>
+
+  <body>
+    <svg class="svg-mask">
+      <defs>
+        <mask id="mask1" >
+          <linearGradient id="grad" gradientUnits="objectBoundingBox" x2="0" y2="1">
+            <stop stop-color="white" offset="0"/>
+            <stop stop-color="white" offset="1"stop-opacity="0.5" />
+            <stop stop-color="white" stop-opacity="1" offset="1"/>
+          </linearGradient>
+          <g id="heart" transform="translate(150 195) scale(1)">
+            <path d="M0 -100 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -100 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100" fill="url(#grad)" stroke="white" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+              <animate dur="1.5s" repeatCount="indefinite" attributeName="d" 
+                                                    keyTimes="0; 0.2; 1"
+                                                    values="
+                                                    M0 -120 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -120 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100; M0 -125 C-45 -180 -115 -140 -115 -100 C-115 -30 -25 -30 0 90 M0 -125 C45 -180 115 -140 115 -100 C115 -30 25 -30 0 90; M0 -120 C-35 -180 -100 -150 -100 -100 C-100 -50 -25 0 0 100 M0 -120 C35 -180 100 -150 100 -100 C100 -50 25 0 0 100">
+
+              </animate>
+            </path>
+          </g>
+      </mask>
+<mask id="mask2" >
+<rect width="200px" height="200px" fill="#fff" />
+</mask>
+      </defs>
+    </svg>
+
+      <% for (var i=0; i < images.length; i++) { %>
+    <svg class="masked-element" width="300" height="300" viewBox="0 0 300 400">
+      <g transform="translate(-70 -50) scale(1.5)">
+      <image xlink:href="<%= images[i].thumbnail_src %>" width="300" height="300" />
+      </g>
+    </svg>
+      <% } %>
+
+  </body>
+
+</html>
