@@ -22,9 +22,10 @@ Once running to seed the database run `node scrapper.js` - this crawls instagram
 ## Docker
 The app works with docker - there's a docker compose file setting up the app and mongodb.
 
-Run `docker-compose urp`
+Run `docker-compose up`
 
 The app runs on port 8001.
+
 
 
 
