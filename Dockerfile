@@ -16,8 +16,6 @@ ADD . /var/www/
 
 WORKDIR /var/www/
 
-RUN npm install 
-
 RUN  ./node_modules/webpack/bin/webpack.js --env.production
 
 CMD npm start
