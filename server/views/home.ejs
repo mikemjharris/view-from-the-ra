@@ -48,7 +48,7 @@
 					<rect x="10" y="10" width="180px" height="180px" fill="url(#grad)" stroke-width="20"  stroke="white"/>
 				</mask>
 			</defs>
-				<image xlink:href="<%= images[i].thumbnail_src %>" width="200" height="200" mask="url(#mask<%= i %>)" />
+      <image alt="<%= images[i].edge_media_to_caption.edges[0].node.text %>" xlink:href="<%= images[i].thumbnail_src %>" width="200" height="200" mask="url(#mask<%= i %>)" />
 			</svg>
 		</a>
 		<% } %>
