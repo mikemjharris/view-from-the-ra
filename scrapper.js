@@ -31,7 +31,7 @@ let list_of_promises = [];
   let initialData = await page.evaluate(() => window._sharedData);
   list_of_promises.push(initialData.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges);
 
-  for (var i = 0; i < 15; i++) {
+  for (var i = 0; i < 19; i++) {
     await timeout(1000);
     await page.hover('footer');
     await timeout(1000);
