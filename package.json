@@ -15,7 +15,7 @@
     "debug": "~0.7.4",
     "ejs": "^2.5.8",
     "express": "~4.16.3",
-    "mongodb": "^3.0.5",
+    "mongodb": "^3.1.13",
     "morgan": "~1.0.0",
     "puppeteer": "^1.2.0",
     "static-favicon": "~1.0.0"
